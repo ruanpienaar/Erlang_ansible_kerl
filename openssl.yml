@@ -1,0 +1,19 @@
+# ansible-playbook --ask-become-pass openssl.yml
+# Install openssl  on mac for Erlang
+---
+- hosts: localhost
+  tasks:
+    - name: "clone openssl from github"
+      git:
+        repo: https://github.com/openssl/openssl
+        dest: openssl
+    - name: "configure openssl"
+      command: chdir=openssl ./config
+    - name: "Compile openssl"
+      command: make -C openssl
+    - name: "Test the openssl compiled output"
+      command: make -C openssl test
+    - name: "Install openssl"
+      command: make -C openssl install
+      become: yes
+      become_method: sudo

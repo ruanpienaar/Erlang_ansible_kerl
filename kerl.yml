@@ -1,0 +1,14 @@
+# Download and install kerl
+# hard coded hosts and install location for now
+# Run with: 
+#   ansible-playbook --ask-become-pass kerl.yml
+---
+- hosts: localhost
+  tasks:
+   - name: download erlang kerl
+     get_url:
+       url: https://raw.githubusercontent.com/kerl/kerl/master/kerl
+       dest: /usr/local/bin
+       mode: 0755
+     become: yes
+     become_method: sudo

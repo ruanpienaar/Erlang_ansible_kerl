@@ -3,7 +3,7 @@
 # Run with: 
 #   ansible-playbook --ask-become-pass kerl.yml
 ---
-- hosts: localhost
+- hosts: all
   tasks:
    - name: download erlang kerl
      get_url:

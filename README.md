@@ -9,6 +9,13 @@ dependancies yourself.
 ansible-galaxy install geerlingguy.homebrew
 ```
 
+=======
+!NB!
+most ansible playbooks are "Hosts: all"
+So be careful to only add localhost to /ets/ansible/hosts
+if you intend to install stuff on 1 machine, or multiple hosts etc
+
+
 ## Java 
 ( install the JDK yourself ) horrible ansbile and oracle licenses experience
 

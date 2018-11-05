@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  vars:
+    homebrew_installed_packages:
+      - gcc
+      - openssl
+      - m4
+      - wget
+      - ncurses
+      - make
+      - unixodbc
+      - wxWidgets
+  roles:
+    - geerlingguy.homebrew

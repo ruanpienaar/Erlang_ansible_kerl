@@ -15,6 +15,11 @@ most ansible playbooks are "Hosts: all"
 So be careful to only add localhost to /ets/ansible/hosts
 if you intend to install stuff on 1 machine, or multiple hosts etc
 
+Also make sure localhost has your own key added:
+```
+ssh-copy-id -i ~/.ssh/id_ed25519.pub $USER@localhost
+```
+
 
 ## Java 
 ( install the JDK yourself ) horrible ansbile and oracle licenses experience

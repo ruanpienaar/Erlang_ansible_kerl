@@ -1,0 +1,32 @@
+# Pass in KERL_BUILD_OPTIONS as vars, and import/include kerl.yml, and create kerl tasks for building installing etc etc
+# Complete the roles part in Ansible docs, and make this re-usable for other versions of Erlang
+# also, this assumes that openssl was installed with homebrew, and /usr/local/ has relevant files
+---
+ - hosts: all
+   #strategy: debug
+   vars:
+     erlang_vsn: 21.1
+     erlang_install_dir: "/Users/rp/erlang/21.1"
+     kerl_conf_opts:
+       KERL_CONFIGURE_OPTIONS: "--with-ssl=/usr/local/opt/openssl"
+   tasks:
+     
+     - name: "Check remote paths"
+       shell: source /Users/rp/.zshrc && env
+
+
+     - name: "Check wx config installed"
+       shell: source /Users/rp/.zshrc && wx-config -version
+   
+     #- name: "Set $KERL_BUILD_OPTS for kerl to use"
+     #  command: export KERL_CONFIGURE_OPTIONS={{kerl_conf_opts}}
+       
+     - name: "Build Erlang XX ( 21.1 ) WIP"
+       shell: source /Users/rp/.zshrc && /usr/local/bin/kerl build {{erlang_vsn}} {{erlang_vsn}}
+       environment: "{{kerl_conf_opts}}"
+       ignore_errors: yes
+
+     - name: "Install Erlang XX ( 21.1 ) WIP"
+       shell: /usr/local/bin/kerl install 21.1 /Users/rp/erlang/21.1
+     #- name: install
+     #  command: kerl install erlang_vsn erlang_install_dir

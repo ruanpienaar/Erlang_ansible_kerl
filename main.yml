@@ -1,4 +1,4 @@
 # First ansbile attempt at writing reusable playbooks
 ---
-- hosts: localhost
+- hosts: all
 - import_playbook: kerl.yml
